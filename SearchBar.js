@@ -50,10 +50,12 @@ export default class SearchBar extends React.Component {
     textStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
     inputProps: PropTypes.object,
     onBackPress: PropTypes.func,
+    onRef: PropTypes.func,
     alwaysShowBackButton: PropTypes.bool,
   };
 
   static defaultProps = {
+    onRef: () => {},
     onSearchChange: () => {},
     onEndEditing: () => {},
     onSubmitEditing: () => {},
@@ -140,6 +142,7 @@ export default class SearchBar extends React.Component {
       iconCloseName,
       placeholderColor,
       textStyle,
+      onRef,
     } = this.props;
 
     let { iconSize, iconPadding } = this.props
@@ -189,7 +192,10 @@ export default class SearchBar extends React.Component {
           }
           <TextInput
             autoCorrect={autoCorrect === true}
-            ref={c => this._textInput = c}
+            ref={c => {
+              onRef(c)
+              this._textInput = c
+            }}
             returnKeyType={returnKeyType}
             onFocus={this._onFocus}
             onBlur={this._onBlur}
