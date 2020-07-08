@@ -8,7 +8,7 @@ import {
   ActivityIndicator,
   Text,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import dismissKeyboard from 'react-native/Libraries/Utilities/dismissKeyboard';
 
 const styles = StyleSheet.create({
